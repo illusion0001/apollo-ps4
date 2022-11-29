@@ -66,9 +66,7 @@ jobs:
         path: ps4-libjbc
 
     - name: Set env vars
-      run: |
-        echo "pkg_file=IV0000-APOL00004_00-APOLLO0000000PS4.pkg" >> $GITHUB_ENV
-        echo "llvm_ver=10.0" >> $GITHUB_ENV
+      run: echo "llvm_ver=10.0" >> $GITHUB_ENV
 
       # temporary release until 0.53 is released
     - name: Download OpenOrbis Toolchain
@@ -92,48 +90,39 @@ jobs:
 
     - name: Install zlib
       working-directory: oosdk_libraries/zlib_partial
-      run: |
-        make install
+      run: make install
 
     - name: Install polarssl
       working-directory: oosdk_libraries/polarssl-1.3.9
-      run: |
-        make install
+      run: make install
 
     - name: Install zip
       working-directory: zip
-      run: |
-        make install
+      run: make install
 
     - name: Install dbglogger
       working-directory: dbglogger
-      run: |
-        make -f Makefile.PS4 install
+      run: make -f Makefile.PS4 install
 
     - name: Install apollo-lib
       working-directory: apollo-lib
-      run: |
-        make -f Makefile.PS4 install
+      run: make -f Makefile.PS4 install
 
     - name: Install libun7zip
       working-directory: libun7zip
-      run: |
-        make -f Makefile.PS4 install
+      run: make -f Makefile.PS4 install
 
     - name: Install libunrar-ps3
       working-directory: libunrar-ps3
-      run: |
-        make -f Makefile.PS4 install
+      run: make -f Makefile.PS4 install
 
     - name: Install mini xml
       working-directory: mxml/ps4
-      run: |
-        make install
+      run: make install
 
     - name: Install libjbc
       working-directory: ps4-libjbc
-      run: |
-        make install
+      run: make install
 
     - name: Install SDL2 library
       working-directory: SDL-PS4
@@ -161,5 +150,5 @@ jobs:
       uses: actions/upload-artifact@v3
       with:
         name: apollo-ps4
-        path: ${{ env.pkg_file }}
+        path: IV0000-APOL00004_00-APOLLO0000000PS4.pkg
         if-no-files-found: error
