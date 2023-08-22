@@ -2,6 +2,7 @@
 #include <string.h>
 #include <dirent.h>
 #include <time.h>
+#include <stdbool.h>
 #include <orbis/NetCtl.h>
 #include <orbis/SaveData.h>
 #include <orbis/UserService.h>
