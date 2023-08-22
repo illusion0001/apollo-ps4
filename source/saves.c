@@ -1,20 +1,4 @@
 #include <stdio.h>
-#include <malloc.h>
-#include <string.h>
-#include <assert.h>
-#include <unistd.h>
-#include <time.h>
-#include <dirent.h>
-#include <orbis/SaveData.h>
-#include <sqlite3.h>
-
-#include "saves.h"
-#include "common.h"
-#include "sfo.h"
-#include "settings.h"
-#include "util.h"
-
-#include <stdio.h>
 #include <string.h>
 #include <dirent.h>
 #include <time.h>
