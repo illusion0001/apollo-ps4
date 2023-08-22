@@ -419,6 +419,7 @@ static void activateAccount(int user)
 
 static void copySavePFS(const save_entry_t* save)
 {
+	show_message("%s:%d", __PRETTY_FUNCTION__, __LINE__);
 	char src_path[256];
 	char hdd_path[256];
 	char mount[32];
@@ -427,6 +428,7 @@ static void copySavePFS(const save_entry_t* save)
 		.account_id = apollo_config.account_id,
 	};
 
+	show_message("%s:%d", __PRETTY_FUNCTION__, __LINE__);
 	snprintf(src_path, sizeof(src_path), "%s%s.bin", save->path, save->dir_name);
 	if ((read_file(src_path, (uint8_t*) mount, 0x10) < 0) || get_max_pfskey_ver() < mount[8])
 	{
@@ -435,13 +437,16 @@ static void copySavePFS(const save_entry_t* save)
 		return;
 	}
 
+	show_message("%s:%d", __PRETTY_FUNCTION__, __LINE__);
 	if (!orbis_SaveMount(save, ORBIS_SAVE_DATA_MOUNT_MODE_RDWR | ORBIS_SAVE_DATA_MOUNT_MODE_CREATE2 | ORBIS_SAVE_DATA_MOUNT_MODE_COPY_ICON, mount))
 	{
-		LOG("[!] Error: can't create/mount save!");
+		//show_message("%s:%d", __PRETTY_FUNCTION__, __LINE__);
+		show_message("Error: can't create/mount save!");
 		return;
 	}
 	orbis_SaveUmount(mount);
 
+	show_message("%s:%d", __PRETTY_FUNCTION__, __LINE__);
 	snprintf(src_path, sizeof(src_path), "%s%s", save->path, save->dir_name);
 	snprintf(hdd_path, sizeof(hdd_path), "/user/home/%08x/savedata/%s/sdimg_%s", apollo_config.user_id, save->title_id, save->dir_name);
 	LOG("Copying <%s> to %s...", src_path, hdd_path);
