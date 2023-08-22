@@ -428,7 +428,7 @@ int orbis_SaveMount(const save_entry_t *save, uint32_t mount_mode, char* mount_p
 
 	if (saveDataInitializeResult != SUCCESS)
 	{
-		LOG("Failed to initialize save data library (%X)", saveDataInitializeResult);
+		show_message("Failed to initialize save data library (%X)", saveDataInitializeResult);
 		return 0;
 	}
 
@@ -457,11 +457,11 @@ int orbis_SaveMount(const save_entry_t *save, uint32_t mount_mode, char* mount_p
 	int32_t mountErrorCode = sceSaveDataMount(&mount, &mountResult);
 	if (mountErrorCode < 0)
 	{
-		LOG("ERROR (%X): can't mount '%s/%s'", mountErrorCode, save->title_id, save->dir_name);
+		show_message("ERROR (%X): can't mount '%s/%s'", mountErrorCode, save->title_id, save->dir_name);
 		return 0;
 	}
 
-	LOG("'%s/%s' mountPath (%s)", save->title_id, save->dir_name, mountResult.mountPathName);
+	show_message("'%s/%s' mountPath (%s)", save->title_id, save->dir_name, mountResult.mountPathName);
 	strncpy(mount_path, mountResult.mountPathName, ORBIS_SAVE_DATA_MOUNT_POINT_DATA_MAXSIZE);
 
 	return 1;
