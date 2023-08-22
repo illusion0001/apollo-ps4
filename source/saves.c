@@ -5,6 +5,10 @@
 #include <orbis/NetCtl.h>
 #include <orbis/SaveData.h>
 #include <orbis/UserService.h>
+#include <orbis/libkernel.h>
+#include <orbis/CommonDialog.h>
+#include <orbis/MsgDialog.h>
+#include <orbis/ImeDialog.h>
 #include <polarssl/md5.h>
 
 #include "saves.h"
