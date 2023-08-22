@@ -10,6 +10,7 @@
 #include <orbis/MsgDialog.h>
 #include <orbis/ImeDialog.h>
 #include <polarssl/md5.h>
+#include <sqlite3.h>
 
 #include "saves.h"
 #include "menu.h"
