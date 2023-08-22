@@ -1166,8 +1166,8 @@ int ReadBackupCodes(save_entry_t * bup)
 				continue;
 
 			regMgr_GetAccountId(i, &account);
-			snprintf(tmp, sizeof(tmp), "%c Activate Offline Account %s (%016lx)", account ? CHAR_TAG_LOCKED : CHAR_TAG_OWNER, userName, account);
-			cmd = _createCmdCode(PATCH_NULL : PATCH_COMMAND, tmp, CMD_CREATE_ACT_DAT);
+			snprintf(tmp, sizeof(tmp), "%c Activate Offline Account %s (%016lx)", CHAR_TAG_OWNER, userName, account);
+			cmd = _createCmdCode(PATCH_COMMAND, tmp, CMD_CREATE_ACT_DAT);
 			cmd->codes[1] = i;
 			list_append(bup->codes, cmd);
 
