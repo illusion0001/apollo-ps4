@@ -36,7 +36,7 @@ jobs:
 
     # temporary release until 0.53 is released
     - name: Download OpenOrbis Toolchain
-      run: curl -sL https://github.com/illusion0001/OpenOrbis-PS4-Toolchain/releases/latest/download/toolchain.tar.gz | tar xz -C ./
+      run: curl -sL https://github.com/illusion0001/OpenOrbis-PS4-Toolchain/releases/download/0.0.1.416/toolchain.tar.gz  | tar xz -C ./
 
     - name: Checkout oosdk_libraries
       uses: actions/checkout@v3
