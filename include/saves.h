@@ -4,7 +4,7 @@
 
 #define APOLLO_PATH				"/data/apollo/"
 
-#ifdef APOLLO_ENABLE_LOGGING
+#ifndef APOLLO_ENABLE_LOGGING
 #define APOLLO_APP_PATH			"/data/apollo/debug/"
 #define APOLLO_SANDBOX_PATH		"/mnt/sandbox/LOAD00044_000%s/"
 #else

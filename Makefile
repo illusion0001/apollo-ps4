@@ -10,11 +10,7 @@ LIBS        := -lc -lkernel -lc++ -lSceAudioOut -lSceUserService -lScePigletv2VS
                -lSceRegMgr -lSceImeDialog -lSDL2 -lapollo -ldbglogger -lpolarssl -lz -lzip -ljbc -lmxml -lunrar -lun7zip
 
 # Additional compile flags.
-EXTRAFLAGS  := -fcolor-diagnostics -Wall -D__PS4__
-
-ifeq ($(DEBUGLOG),1)
-    EXTRAFLAGS += -DAPOLLO_ENABLE_LOGGING
-endif
+EXTRAFLAGS  := -fcolor-diagnostics -Wall -D__PS4__ -DAPOLLO_ENABLE_LOGGING
 
 # Asset and module directories.
 ASSETS 		:= $(wildcard assets/**/*)

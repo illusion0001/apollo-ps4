@@ -36,7 +36,12 @@ jobs:
 
     # temporary release until 0.53 is released
     - name: Download OpenOrbis Toolchain
-      run: curl -sL https://github.com/illusion0001/OpenOrbis-PS4-Toolchain/releases/latest/download/toolchain.tar.gz | tar xz -C ./
+      run: curl -sL https://github.com/illusion0001/OpenOrbis-PS4-Toolchain/releases/download/0.0.1.416/toolchain.tar.gz  | tar xz -C ./
+
+    - name: TEMP def update
+      run: |
+        curl https://raw.githubusercontent.com/OpenOrbis/OpenOrbis-PS4-Toolchain/master/include/orbis/UserService.h > OpenOrbis/PS4Toolchain/include/orbis/UserService.h
+        curl https://raw.githubusercontent.com/OpenOrbis/OpenOrbis-PS4-Toolchain/master/include/orbis/_types/user.h > OpenOrbis/PS4Toolchain/include/orbis/_types/user.h
 
     - name: Checkout oosdk_libraries
       uses: actions/checkout@v3
@@ -196,7 +201,7 @@ jobs:
 
     - name: Build Apollo App Package
       run: |
-        make
+        make DEBUGLOG=1
         mv IV0000-APOL00004_00-APOLLO0000000PS4.pkg apollo-ps4-build_${{ env.sha_name }}.pkg
 
     - name: Push package artifact
