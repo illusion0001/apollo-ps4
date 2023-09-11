@@ -53,10 +53,10 @@ app_config_t apollo_config = {
     .app_name = "APOLLO",
     .app_ver = {0},
     .save_db = ONLINE_URL,
-    .music = 1,
+    .music = 0,
     .doSort = 1,
-    .doAni = 1,
-    .update = 1,
+    .doAni = 0,
+    .update = 0,
     .user_id = 0,
     .psid = {0, 0},
     .account_id = 0,
@@ -574,7 +574,7 @@ s32 main(s32 argc, const char* argv[])
 		LOG("Unpacking application data...");
 //		clean_directory(APOLLO_DATA_PATH);
 		if (extract_zip(APOLLO_APP_PATH "misc/appdata.zip", APOLLO_DATA_PATH))
-			show_message("Successfully installed local application data");
+			notifi("cxml://psnotification/tex_default_icon_notification", "Successfully installed local application data");
 
 		strncpy(apollo_config.app_ver, APOLLO_VERSION, sizeof(apollo_config.app_ver));
 		save_app_settings(&apollo_config);

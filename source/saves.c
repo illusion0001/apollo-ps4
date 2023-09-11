@@ -1158,8 +1158,8 @@ int ReadBackupCodes(save_entry_t * bup)
 		LOG("Getting Users...");
 		for (int i = 1; i <= 16; i++)
 		{
-			uint64_t account;
-			char userName[0x20];
+			uint64_t account = 0;
+			char userName[0x20] = {0};
 
 			regMgr_GetUserName(i, userName);
 			if (!userName[0])
@@ -1167,9 +1167,9 @@ int ReadBackupCodes(save_entry_t * bup)
 
 			regMgr_GetAccountId(i, &account);
 			snprintf(tmp, sizeof(tmp), "%c Activate Offline Account %s (%016lx)", account ? CHAR_TAG_LOCKED : CHAR_TAG_OWNER, userName, account);
-			cmd = _createCmdCode(account ? PATCH_NULL : PATCH_COMMAND, tmp, CMD_CODE_NULL); //CMD_CREATE_ACT_DAT
+			cmd = _createCmdCode(PATCH_COMMAND, tmp, CMD_CODE_NULL); //CMD_CREATE_ACT_DAT
 
-			if (!account)
+			// if (!account)
 			{
 				cmd->options_count = 1;
 				cmd->options = calloc(1, sizeof(option_entry_t));
