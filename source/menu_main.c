@@ -375,8 +375,10 @@ static void doMainMenu()
 		return;
 	}
 
-	else if(orbisPadGetButtonPressed(ORBIS_PAD_BUTTON_CIRCLE) && show_dialog(DIALOG_TYPE_YESNO, "Exit to XMB?"))
+	else if(orbisPadGetButtonPressed(ORBIS_PAD_BUTTON_CIRCLE))
+	{
 		close_app = 1;
+	}
 	
 	Draw_MainMenu();
 }
