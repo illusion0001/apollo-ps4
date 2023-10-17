@@ -26,7 +26,7 @@ jobs:
         echo "sdl_path=SDL-PS4" >> $GITHUB_ENV
         echo "curl_path=oosdk_libraries/curl-7.64.1" >> $GITHUB_ENV
         echo "OO_PS4_TOOLCHAIN=${GITHUB_WORKSPACE}/OpenOrbis/PS4Toolchain" >> $GITHUB_ENV
-        sudo apt install llvm-ar
+        sudo apt install llvm
 
     - name: Cache OpenOrbis Toolchain
       id: cache-oosdk
