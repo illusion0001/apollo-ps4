@@ -482,6 +482,16 @@ s32 main(s32 argc, const char* argv[])
 	dbglogger_init();
 #endif
 
+#define STDIN 0
+#define STDOUT 1
+#define STDERR 2
+	int fd = open("/dev/console", O_WRONLY);
+	dup2(fd, STDOUT);
+	dup2(STDOUT, STDERR);
+	dup2(STDOUT, STDIN);
+#undef STDIN
+#undef STDOUT
+#undef STDERR
 	// Initialize SDL functions
 	LOG("Initializing SDL");
 	if (SDL_Init(SDL_INIT_VIDEO) != SUCCESS)
