@@ -64,7 +64,7 @@ jobs:
       uses: actions/checkout@v3
       with:
         repository: illusion0001/apollo-lib
-        ref: patch-1
+        ref: patch-2
         path: apollo-lib
 
     - name: Checkout SQLite
