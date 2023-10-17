@@ -75,7 +75,8 @@ jobs:
     - name: Checkout zip
       uses: actions/checkout@v3
       with:
-        repository: bucanero/zip
+        repository: illusion0001/zip
+        ref: patch-1
         path: zip
 
     - name: Checkout SDL-PS4
