@@ -63,7 +63,8 @@ jobs:
     - name: Checkout apollo-lib
       uses: actions/checkout@v3
       with:
-        repository: bucanero/apollo-lib
+        repository: illusion0001/apollo-lib
+        ref: patch-1
         path: apollo-lib
 
     - name: Checkout SQLite
