@@ -46,7 +46,8 @@ jobs:
     - name: Checkout oosdk_libraries
       uses: actions/checkout@v3
       with:
-        repository: bucanero/oosdk_libraries
+        repository: illusion0001/oosdk_libraries
+        ref: patch-1
         path: oosdk_libraries
 
     - name: Copy makerules
