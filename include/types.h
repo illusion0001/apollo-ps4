@@ -16,7 +16,7 @@
 #include <sys/types.h>
 
 #include <dbglogger.h>
-#define LOG dbglogger_log
+#define LOG(a, args...) printf("(%s:%d) " a "\n", __FILE__, __LINE__, ##args)
 
 #include <sys/stat.h>
 

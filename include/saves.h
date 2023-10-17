@@ -1,6 +1,10 @@
+#pragma once
+
 #include <apollo.h>
 #include <dbglogger.h>
-#define LOG dbglogger_log
+#include <stdio.h>
+
+#define LOG(a, args...) printf("(%s:%d) " a "\n", __FILE__, __LINE__, ##args)
 
 #define APOLLO_PATH				"/data/apollo/"
 
