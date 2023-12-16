@@ -578,17 +578,8 @@ s32 main(s32 argc, const char* argv[])
 	// Load application settings
 	load_app_settings(&apollo_config);
 
-	// Unpack application data on first run
-	if (strncmp(apollo_config.app_ver, APOLLO_VERSION, sizeof(apollo_config.app_ver)) != 0)
-	{
-		LOG("Unpacking application data...");
-//		clean_directory(APOLLO_DATA_PATH);
-		if (extract_zip(APOLLO_APP_PATH "misc/appdata.zip", APOLLO_DATA_PATH))
-			notifi("cxml://psnotification/tex_default_icon_notification", "Successfully installed local application data");
-
-		strncpy(apollo_config.app_ver, APOLLO_VERSION, sizeof(apollo_config.app_ver));
-		save_app_settings(&apollo_config);
-	}
+	strncpy(apollo_config.app_ver, APOLLO_VERSION, sizeof(apollo_config.app_ver));
+	save_app_settings(&apollo_config);
 
 	// dedicated to Leon & Luna ~ in loving memory
 	menu_textures[buk_scr_png_index] = menu_textures[leonluna_jpg_index];
