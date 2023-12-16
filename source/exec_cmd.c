@@ -422,7 +422,6 @@ static void copySavePFS(const save_entry_t* save)
 	char hdd_path[256];
 	char mount[32];
 	sfo_patch_t patch = {
-		.user_id = apollo_config.user_id,
 		.account_id = apollo_config.account_id,
 	};
 
