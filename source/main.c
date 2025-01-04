@@ -636,6 +636,7 @@ s32 main(s32 argc, const char* argv[])
 	}
 
 	// Unpack application data on first run
+#if 0
 	if (strncmp(apollo_config.app_ver, APOLLO_VERSION, sizeof(apollo_config.app_ver)) != 0)
 	{
 		LOG("Unpacking application data...");
@@ -646,6 +647,7 @@ s32 main(s32 argc, const char* argv[])
 		strncpy(apollo_config.app_ver, APOLLO_VERSION, sizeof(apollo_config.app_ver));
 		save_app_settings(&apollo_config);
 	}
+#endif
 
 	// dedicated to Leon & Luna ~ in loving memory
 
