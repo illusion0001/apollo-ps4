@@ -14,6 +14,8 @@ on:
 jobs:
   build_pkg:
     runs-on: ubuntu-20.04
+    permissions:
+      contents: write
     steps:
 
     - name: Checkout
@@ -219,3 +221,8 @@ jobs:
         name: apollo-ps4-build_${{ env.sha_name }}
         path: apollo-ps4-build_${{ env.sha_name }}.pkg
         if-no-files-found: error
+
+    - name: Upload release
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: gh release create "${{ github.run_number }}+${{ env.sha_name }}" apollo-ps4-build_${{ env.sha_name }}.pkg --target ${{ GITHUB.SHA }} -t "${{ github.run_number }}+${{ env.sha_name }}" --prerelease
