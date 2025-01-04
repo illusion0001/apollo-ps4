@@ -651,7 +651,7 @@ s32 main(s32 argc, const char* argv[])
 
 #ifndef APOLLO_ENABLE_LOGGING
 	// Splash screen logo (fade-in)
-	drawSplashLogo(1);
+	// drawSplashLogo(1);
 #endif
 
 	// Setup font
@@ -663,7 +663,7 @@ s32 main(s32 argc, const char* argv[])
 
 #ifndef APOLLO_ENABLE_LOGGING
 	// Splash screen logo (fade-out)
-	drawSplashLogo(-1);
+	// drawSplashLogo(-1);
 #endif
 	SDL_DestroyTexture(menu_textures[buk_scr_png_index].texture);
 	
@@ -674,7 +674,7 @@ s32 main(s32 argc, const char* argv[])
 	SDL_CreateThread(&LoadSounds, "audio_thread", NULL);
 
 #ifndef APOLLO_ENABLE_LOGGING
-	Draw_MainMenu_Ani();
+	// Draw_MainMenu_Ani();
 #endif
 
 	while (!close_app)
@@ -703,8 +703,10 @@ s32 main(s32 argc, const char* argv[])
 		SDL_RenderPresent(renderer);
 	}
 
+	/*
 	if (apollo_config.doAni)
 		drawEndLogo();
+	*/		
 
     // Cleanup resources
     SDL_DestroyRenderer(renderer);
