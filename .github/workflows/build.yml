@@ -29,6 +29,10 @@ jobs:
         echo "curl_path=oosdk_libraries/curl-7.64.1" >> $GITHUB_ENV
         echo "OO_PS4_TOOLCHAIN=${GITHUB_WORKSPACE}/OpenOrbis/PS4Toolchain" >> $GITHUB_ENV
 
+    - run: |
+        echo "namepkg=apollo-ps4-build_${{ env.sha_name }}" >> $GITHUB_ENV
+        echo "pkg=apollo-ps4-build_${{ env.sha_name }}.pkg" >> $GITHUB_ENV
+
     - name: Cache OpenOrbis Toolchain
       id: cache-oosdk
       uses: actions/cache@v4
@@ -213,16 +217,16 @@ jobs:
     - name: Build Apollo App Package
       run: |
         make
-        mv IV0000-APOL00004_00-APOLLO0000000PS4.pkg apollo-ps4-build_${{ env.sha_name }}.pkg
+        mv IV0000-APOL00004_00-APOLLO0000000PS4.pkg ${{ env.pkg }}
 
     - name: Push package artifact
       uses: actions/upload-artifact@v4
       with:
-        name: apollo-ps4-build_${{ env.sha_name }}
-        path: apollo-ps4-build_${{ env.sha_name }}.pkg
+        name: ${{ env.namepkg }}
+        path: ${{ env.pkg }}
         if-no-files-found: error
 
     - name: Upload release
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      run: gh release create "${{ github.run_number }}+${{ env.sha_name }}" apollo-ps4-build_${{ env.sha_name }}.pkg --target ${{ GITHUB.SHA }} -t "${{ github.run_number }}+${{ env.sha_name }}" --prerelease
+      run: gh release create "${{ github.run_number }}+${{ env.sha_name }}" ${{ env.pkg }} --target ${{ GITHUB.SHA }} -t "${{ github.run_number }}+${{ env.sha_name }}" --prerelease
